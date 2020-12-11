@@ -15,14 +15,14 @@ namespace bead_program
 {
     public partial class Form1 : Form
     {
-        public List<County> counties = new List<County>();
+        public BindingList<County> counties = new BindingList<County>();
 
         public Form1()
         {
             InitializeComponent();
             loadCounties();
 
-            int a = 1;
+            dataGridView1.DataSource = counties;
 
         }
 
