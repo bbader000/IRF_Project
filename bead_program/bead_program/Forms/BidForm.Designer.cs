@@ -35,6 +35,7 @@
             this.lbl_value = new System.Windows.Forms.Label();
             this.lbl_startvalue = new System.Windows.Forms.Label();
             this.lbl_countyname = new System.Windows.Forms.Label();
+            this.lbl_timer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_title
@@ -76,6 +77,7 @@
             this.btn_bid.TabIndex = 10;
             this.btn_bid.Text = "Emelés (500 000 Ft)";
             this.btn_bid.UseVisualStyleBackColor = true;
+            this.btn_bid.Click += new System.EventHandler(this.btn_bid_Click);
             // 
             // lbl_value
             // 
@@ -107,11 +109,23 @@
             this.lbl_countyname.TabIndex = 7;
             this.lbl_countyname.Text = "temp_countyname";
             // 
+            // lbl_timer
+            // 
+            this.lbl_timer.AutoSize = true;
+            this.lbl_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_timer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_timer.Location = new System.Drawing.Point(219, 209);
+            this.lbl_timer.Name = "lbl_timer";
+            this.lbl_timer.Size = new System.Drawing.Size(44, 31);
+            this.lbl_timer.TabIndex = 14;
+            this.lbl_timer.Text = "10";
+            // 
             // BidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 591);
+            this.Controls.Add(this.lbl_timer);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.lbl_biggestbiddername);
             this.Controls.Add(this.lbl_biggestbid);
@@ -135,5 +149,6 @@
         private System.Windows.Forms.Label lbl_value;
         private System.Windows.Forms.Label lbl_startvalue;
         private System.Windows.Forms.Label lbl_countyname;
+        private System.Windows.Forms.Label lbl_timer;
     }
 }

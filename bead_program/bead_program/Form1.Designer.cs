@@ -43,6 +43,7 @@
             this.lbl_currentbalance = new System.Windows.Forms.Label();
             this.btn_buydog = new System.Windows.Forms.Button();
             this.btn_selldog = new System.Windows.Forms.Button();
+            this.btn_pick = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,11 +97,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(260, 491);
+            this.label1.Location = new System.Drawing.Point(22, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lbl_actualyear
             // 
@@ -181,11 +183,21 @@
             this.btn_selldog.Text = "Kutya eladás";
             this.btn_selldog.UseVisualStyleBackColor = true;
             // 
+            // btn_pick
+            // 
+            this.btn_pick.Location = new System.Drawing.Point(217, 472);
+            this.btn_pick.Name = "btn_pick";
+            this.btn_pick.Size = new System.Drawing.Size(175, 51);
+            this.btn_pick.TabIndex = 11;
+            this.btn_pick.Text = "Választ";
+            this.btn_pick.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 610);
+            this.Controls.Add(this.btn_pick);
             this.Controls.Add(this.btn_selldog);
             this.Controls.Add(this.btn_buydog);
             this.Controls.Add(this.lbl_currentbalance);
@@ -223,6 +235,7 @@
         private System.Windows.Forms.Label lbl_currentbalance;
         private System.Windows.Forms.Button btn_buydog;
         private System.Windows.Forms.Button btn_selldog;
+        private System.Windows.Forms.Button btn_pick;
     }
 }
 

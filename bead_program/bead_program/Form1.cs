@@ -110,9 +110,19 @@ namespace bead_program
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //County row = (County)dataGridView1.CurrentRow.DataBoundItem;
-            //row.owner = "Me";
-            //dataGridView1.Refresh();
+            County row = (County)dataGridView1.CurrentRow.DataBoundItem;
+            row.owner = "Me";
+            if (row.ownerID != null)
+            {
+                row.ownerID = row.ownerID + ";" +  "4";
+            }
+            else
+            {
+                row.ownerID = "4";
+            }
+
+            
+            dataGridView1.Refresh();
 
 
             startGame();
@@ -163,17 +173,38 @@ namespace bead_program
         private void bidPlayer(string[] temp, int county)
         {
 
-            
-            //List<Player> bidders = new List<Player>();
 
-            //for (int i = 0; i < temp.Length; i++)
-            //{
-            //    Player player = getPlayerById(int.Parse(temp[i]));
-            //    player.bidmax = player.balance * 0.70;
-            //    bidders.Add(player);
-            //}
+            List<Player> bidders = new List<Player>();
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                Player player = getPlayerById(int.Parse(temp[i]));
+                player.bidmax = player.balance * 0.50;
+                bidders.Add(player);
+            }
+
+            BidForm bidForm = new BidForm(counties, players , bidders, county);
+            if (bidForm.ShowDialog() == DialogResult.OK)
+            {
+                bidWinnerPick(county, bidForm.currentValue, bidForm.buyerID);
+                dataGridView1.Refresh();
+
+                for (int i = 0; i < bidders.Count; i++)
+                {
+                    if (bidders[i].id != bidForm.buyerID)
+                    {
+                        if (bidders[i].id != 4)
+                        {
+                            newPick(getPlayerPosById(bidders[i].id));
+                        }
+
+                    }
+                }
 
 
+
+                
+            }
 
         }
 
@@ -184,7 +215,7 @@ namespace bead_program
             for (int i = 0; i < temp.Length; i++)
             {
                 Player player = getPlayerById(int.Parse(temp[i]));
-                player.bidmax = player.balance * 0.70;
+                player.bidmax = player.balance * 0.50;
                 bidders.Add(player);
             }
 
@@ -193,7 +224,7 @@ namespace bead_program
             bool sold = false;
             int buyerID = 0;
             int potentialBuy = 0;
-            while(!sold)
+            while (!sold)
             {
 
                 for (int i = 0; i < bidders.Count; i++)
@@ -208,7 +239,7 @@ namespace bead_program
 
                     double chance = (bidders[i].bidmax - currentValue) / bidders[i].bidmax;
                     double roll = rn.NextDouble();
-                    if (roll <= chance )
+                    if (roll <= chance)
                     {
                         buyerID = bidders[i].id;
                         currentValue += 500000;
@@ -220,14 +251,11 @@ namespace bead_program
                         potentialBuy++;
                     }
                 }
-                
+
 
             }
 
-            counties[county].ownerID = buyerID.ToString();
-            Player buyerPlayer = getPlayerById(buyerID);
-            counties[county].owner = buyerPlayer.name;
-            counties[county].value = currentValue;
+            bidWinnerPick(county, currentValue, buyerID);
 
             for (int i = 0; i < bidders.Count; i++)
             {
@@ -245,7 +273,15 @@ namespace bead_program
 
         }
 
-        private int getPlayerPosById(int id)
+        public void bidWinnerPick(int county, int currentValue, int buyerID)
+        {
+            counties[county].ownerID = buyerID.ToString();
+            Player buyerPlayer = getPlayerById(buyerID);
+            counties[county].owner = buyerPlayer.name;
+            counties[county].value = currentValue;
+        }
+
+        public  int getPlayerPosById(int id)
         {
             int temp = 0;
             for (int i = 0; i < players.Count; i++)
@@ -412,6 +448,11 @@ namespace bead_program
         }
 
         private void lbl_balance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }
