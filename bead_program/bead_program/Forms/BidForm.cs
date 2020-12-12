@@ -40,7 +40,7 @@ namespace bead_program.Forms
             this.lbl_biggestbiddername.Text = "";
             this.lbl_value.Text = counties[county].value.ToString();
 
-
+            int a = 0;
             startBid();
 
 
