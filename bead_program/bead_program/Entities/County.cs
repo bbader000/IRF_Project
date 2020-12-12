@@ -13,6 +13,10 @@ namespace bead_program.Entities
         public int area { get; set; }
         public double forest { get; set; }
         public int rain { get; set; }
+        public int value { get; set; }
+        public string owner { get; set; }
+        public int mush { get; set; }
+        
 
         public County()
         {
