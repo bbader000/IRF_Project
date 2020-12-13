@@ -44,6 +44,7 @@
             this.btn_buydog = new System.Windows.Forms.Button();
             this.btn_selldog = new System.Windows.Forms.Button();
             this.btn_pick = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,11 +193,19 @@
             this.btn_pick.Text = "Választ";
             this.btn_pick.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(41, 581);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(830, 530);
+            this.panel1.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 610);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_pick);
             this.Controls.Add(this.btn_selldog);
             this.Controls.Add(this.btn_buydog);
@@ -236,6 +245,7 @@
         private System.Windows.Forms.Button btn_buydog;
         private System.Windows.Forms.Button btn_selldog;
         private System.Windows.Forms.Button btn_pick;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

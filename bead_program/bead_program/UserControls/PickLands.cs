@@ -1,143 +1,58 @@
-﻿using bead_program.Entities;
-using bead_program.Forms;
-using bead_program.UserControls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
+using bead_program.Entities;
+using bead_program.Forms;
 
-namespace bead_program
+namespace bead_program.UserControls
 {
-    public partial class Form1 : Form
+    public partial class PickLands : UserControl
     {
-        public string playerName;
-        public int year;
-        public BindingList<County> counties = new BindingList<County>();
-        public BindingList<County> pickedCounties = new BindingList<County>();
-        public BindingList<Player> players = new BindingList<Player>();
-        Random rn = new Random();
         
 
-        public Form1()
+        public BindingList<County> counties { get; set; }
+        public BindingList<County> pickedCounties { get; set; }
+        public BindingList<Player> players { get; set; }
+
+
+        public Random rn = new Random();
+
+        public PickLands(BindingList<County> counties, BindingList<County> pickedCounties, BindingList<Player> players)
         {
-            getPlayerName();
             InitializeComponent();
-            loadPlayers();
-            this.label1.Text = playerName;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            loadCounties();
 
-            
+            this.counties = counties;
+            this.pickedCounties = pickedCounties;
+            this.players = players;
+            dgw_lands.DataSource = counties;
+            dgw_lands.Columns["id"].Visible = false;
+            dgw_lands.Columns["mush"].Visible = false;
+
+
+
+
 
 
         }
 
-        private void loadPlayers()
-        {
-            string[] names = new string[] {"Joe","Lőrinc","Angela" };
 
-            for (int i = 1; i < 4; i++)
-            {
-                players.Add(new Player()
-                {
-                    id = i,
-                    name = names[i-1],
-                    balance = 20000000,
-                    dogs = 10,
-
-                });
-            }
-            players.Add(new Player()
-            {
-                id = 4,
-                name = playerName,
-                balance = 20000000,
-                dogs = 10,
-
-            });
-
-        }
-
-        private void getPlayerName()
-        {
-            UserNameForm nameform = new UserNameForm();
-            if (nameform.ShowDialog() == DialogResult.OK)
-            {
-                this.playerName = nameform.name;
-            }
-            
-        }
-
-        void loadCounties()
-        {
-            XDocument xdocument = XDocument.Load("countydata.xml");
-            IEnumerable<XElement> data = xdocument.Root.Elements();
-            int i = 1;
-            foreach (var row in data)
-            {
-                counties.Add(new County()
-                {
-                    id = i,
-                    name = row.Element("County").Value,
-                    area = int.Parse(row.Element("Area").Value),
-                    forest = double.Parse(row.Element("Forest").Value),
-                    rain = int.Parse(row.Element("Rain").Value),
-                    value = 3000000
-                }
-                );
-                i++;
-                
-
-            }
-            dataGridView1.DataSource = counties;
-            dataGridView1.Columns["id"].Visible = false;
-            dataGridView1.Columns["mush"].Visible = false;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void PickLands_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_pass_Click(object sender, EventArgs e)
         {
-            County row = (County)dataGridView1.CurrentRow.DataBoundItem;
-            row.owner = "Me";
-            if (row.ownerID != null)
-            {
-                row.ownerID = row.ownerID + ";" +  "4";
-            }
-            else
-            {
-                row.ownerID = "4";
-            }
-
-            
-            dataGridView1.Refresh();
-
-
-            startGame();
-
-        }
-
-        private void startGame()
-        {
-            this.year = 2016;
-            lbl_year.Text = year.ToString();
-
             pickLandsFirst();
             checkIfBid();
-
         }
+
 
         private void checkIfBid()
         {
@@ -183,11 +98,11 @@ namespace bead_program
                 bidders.Add(player);
             }
 
-            BidForm bidForm = new BidForm(counties, players , bidders, county);
+            BidForm bidForm = new BidForm(counties, players, bidders, county);
             if (bidForm.ShowDialog() == DialogResult.OK)
             {
                 bidWinnerPick(county, bidForm.currentValue, bidForm.buyerID);
-                dataGridView1.Refresh();
+                dgw_lands.Refresh();
 
                 for (int i = 0; i < bidders.Count; i++)
                 {
@@ -203,7 +118,7 @@ namespace bead_program
 
 
 
-                
+
             }
 
         }
@@ -265,7 +180,7 @@ namespace bead_program
                     newPick(pos);
                 }
             }
-            dataGridView1.Refresh();
+            dgw_lands.Refresh();
 
 
 
@@ -281,7 +196,7 @@ namespace bead_program
             counties[county].value = currentValue;
         }
 
-        public  int getPlayerPosById(int id)
+        public int getPlayerPosById(int id)
         {
             int temp = 0;
             for (int i = 0; i < players.Count; i++)
@@ -332,7 +247,7 @@ namespace bead_program
                             }
                         }
                         else
-                        { 
+                        {
                             counties[temp].ownerID = players[j].id.ToString();
                             counties[temp].owner = players[j].name;
                             break;
@@ -344,7 +259,7 @@ namespace bead_program
                 }
 
             }
-            dataGridView1.Refresh();
+            dgw_lands.Refresh();
 
         }
 
@@ -381,7 +296,7 @@ namespace bead_program
                 }
             }
 
-            
+
         }
 
         private bool checkOwner(int j, int temp)
@@ -390,7 +305,7 @@ namespace bead_program
 
             int rrr = rn.Next(0, 100);
 
-            if (rrr< 50)
+            if (rrr < 50)
             {
                 return true;
             }
@@ -402,7 +317,7 @@ namespace bead_program
 
 
 
-         
+
         }
 
         private int[] getIdOrder()
@@ -421,7 +336,7 @@ namespace bead_program
                     i--;
                 }
             }
-            return ids; 
+            return ids;
         }
 
         private Player getPlayerById(int id)
@@ -437,24 +352,6 @@ namespace bead_program
 
 
             return player;
-        }
-
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_balance_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
