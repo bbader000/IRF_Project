@@ -22,14 +22,14 @@ namespace bead_program.Entities
 
         public void BuyDog()
         {
-            this.balance -= 1000000;
-            this.dogs += 10;
+            this.balance -= 100000;
+            this.dogs += 1;
         }
 
         public void SellDog()
         {
-            this.balance += 500000;
-            this.dogs -= 10;
+            this.balance += 50000;
+            this.dogs -= 1;
         }
 
         public void BuyLand(int price)

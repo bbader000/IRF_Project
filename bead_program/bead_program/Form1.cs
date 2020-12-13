@@ -1,11 +1,13 @@
 ﻿using bead_program.Entities;
 using bead_program.Forms;
 using bead_program.UserControls;
+using CsvHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,7 +93,7 @@ namespace bead_program
 
         void loadCounties()
         {
-            XDocument xdocument = XDocument.Load(@"C:\Temp\countydata.xml");
+            XDocument xdocument = XDocument.Load("countydata.xml");
             IEnumerable<XElement> data = xdocument.Root.Elements();
             int i = 1;
             foreach (var row in data)
@@ -169,14 +171,19 @@ namespace bead_program
             {
                 btn_yearresults.Enabled = true;
                 btn_startyear.Enabled = true;
+
+                btn_buydog.Enabled = true;
+                btn_selldog.Enabled = true;
                 lbl_balance.Text = players[3].balance.ToString();
+
+                if (year == 2020)
+                {
+
+                }
                 
             }
 
         }
-
-        
-        
 
         private void btn_startyear_Click(object sender, EventArgs e)
         {
@@ -194,23 +201,74 @@ namespace bead_program
 
         private void btn_startharvest_Click(object sender, EventArgs e)
         {
-           
+            marketPrice = rn.Next(50000, 80000);
             btn_startharvest.Enabled = false;
             btn_startharvest.BackColor = Color.Transparent;
-            Harvest harvest = new Harvest()
+            County plyerCOunty = new County();
+            for (int i = 0; i < pickedCounties.Count; i++)
             {
-                pickedCounty = counties[0],
-                player = players[3],
-                marketPrice = marketPrice,
-                pickedCounties = pickedCounties,
-                players = players,
-                resultCounties = resultCounties,
-            };
+                if (pickedCounties[i].ownerID == "4")
+                {
+                    plyerCOunty = pickedCounties[i];
+                    break;
+                }
+            }
+
+            Harvest harvest = new Harvest(pickedCounties, players, resultCounties, plyerCOunty, players[3], marketPrice);
+           
             panel_main.Controls.Add(harvest);
         }
 
         private void btn_yearresults_Click(object sender, EventArgs e)
         {
+            List<CountyResult> tempList = new List<CountyResult>();
+
+            for (int i = 0; i < resultCounties.Count; i++)
+            {
+                CountyResult temp = new CountyResult()
+                {
+                    name = resultCounties[i].name,
+                    value = resultCounties[i].value,
+                    oldvalue = resultCounties[i].oldvalue,
+                    owner = resultCounties[i].owner,
+                    mush = resultCounties[i].mush,
+                    income = resultCounties[i].income,
+                };
+
+                tempList.Add(temp);
+            }
+
+            using (var mem = new MemoryStream())
+            using (var writer = new StreamWriter("ertekelo.csv"))
+            using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.CurrentCulture))
+            {
+                csvWriter.Configuration.Delimiter = ";";
+
+                csvWriter.WriteField("Megye");
+                csvWriter.WriteField("Vetelar");
+                csvWriter.WriteField("Eredeti ar");
+                csvWriter.WriteField("Jogosult");
+                csvWriter.WriteField("Goma mennyiseg (kg)");
+                csvWriter.WriteField("Bevetel");
+                csvWriter.NextRecord();
+
+                foreach (CountyResult project in tempList)
+                {
+                    csvWriter.WriteField(project.name);
+                    csvWriter.WriteField(project.value);
+                    csvWriter.WriteField(project.oldvalue);
+                    csvWriter.WriteField(project.owner);
+                    csvWriter.WriteField(project.mush);
+                    csvWriter.WriteField(project.income);
+                    csvWriter.NextRecord();
+                }
+
+                writer.Flush();
+                var result = Encoding.UTF8.GetString(mem.ToArray());
+                Console.WriteLine(result);
+            }
+
+
 
         }
 

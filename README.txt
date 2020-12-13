@@ -10,6 +10,3 @@ Ha mindenkinek sikeresen lesz joga, akkor elindul a szarvasgomba keresés, ezt a
 Az összes év végén (5), a legtöbb pénzel endelkező játékos nyer. Ahol egyszer már lett szedve szarvasgomba, ott 5 éven velül nem kezdődhet új szüret.
 
 
----- FONTOS -----
-
-A fő mappában található "countydata.xml" - fájlt, át kell másolni a "C:\Temp" mappába.

@@ -157,9 +157,9 @@
             this.btn_yearresults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_yearresults.Location = new System.Drawing.Point(12, 577);
             this.btn_yearresults.Name = "btn_yearresults";
-            this.btn_yearresults.Size = new System.Drawing.Size(210, 40);
+            this.btn_yearresults.Size = new System.Drawing.Size(268, 40);
             this.btn_yearresults.TabIndex = 15;
-            this.btn_yearresults.Text = "Éves érékelő exportálás";
+            this.btn_yearresults.Text = "Eddigi éves érékelő exportálás";
             this.btn_yearresults.UseVisualStyleBackColor = true;
             this.btn_yearresults.Click += new System.EventHandler(this.btn_yearresults_Click);
             // 

@@ -17,9 +17,9 @@ namespace UnitTestProject
 
         [
             Test,
-            TestCase(9000000, 9, 9000000),
-            TestCase(2300000, 2, 2000000),
-            TestCase(970000, 0, 0)
+            TestCase(5000000, 10, 1000000),
+            TestCase(2300000, 4, 400000),
+            TestCase(97000, 0, 0)
         ]
         public void PickerTest(int income, int boughtDogs, int spentMoney)
         {

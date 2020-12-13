@@ -7,14 +7,14 @@ namespace bead_program.UserControls
 {
     public partial class Harvest : UserControl
     {
-        public BindingList<County> pickedCounties { get; set; }
-        public BindingList<Player> players { get; set; }
-        public BindingList<County> resultCounties { get; set; }
+        public BindingList<County> pickedCountiesH { get; set; }
+        public BindingList<Player> playersH { get; set; }
+        public BindingList<County> resultCountiesH { get; set; }
         
 
-        public County pickedCounty { get; set; }
-        public Player player  { get; set; }
-        public int marketPrice { get; set; }
+        public County pickedCountyH { get; set; }
+        public Player playerH  { get; set; }
+        public int marketPriceH { get; set; }
         Timer harvestTimer = new Timer();
         Timer monthTimer = new Timer();
 
@@ -26,12 +26,17 @@ namespace bead_program.UserControls
         public int monthCounter = 0;
 
 
-        public Harvest()
+        public Harvest(BindingList<County> pickedCountiesH = null, BindingList<Player> playersH = null, BindingList<County> resultCountiesH = null, County pickedCountyH = null, Player playerH = null, int marketPriceH = 0)
         {
-            
+            this.pickedCountiesH = pickedCountiesH;
+            this.playersH = playersH;
+            this.resultCountiesH = resultCountiesH;
+            this.pickedCountyH = pickedCountyH;
+            this.playerH = playerH;
+            this.marketPriceH = marketPriceH;
             InitializeComponent();
             btn_results.Enabled = false;
-            lbl_price.Text = marketPrice.ToString();
+            lbl_price.Text = marketPriceH.ToString();
 
 
 
@@ -45,6 +50,8 @@ namespace bead_program.UserControls
             harvestTimer.Tick += HarvestTimer_Tick;
         }
 
+        
+
         private void MonthTimer_Tick(object sender, EventArgs e)
         {
             monthCounter++;
@@ -53,12 +60,12 @@ namespace bead_program.UserControls
                 monthTimer.Stop();
                 harvestTimer.Stop();
                 btn_results.Enabled = true;
-                pickedCounty.income = (_counter * marketPrice);
-                pickedCounty.mush = _counter;
+                pickedCountyH.income = (_counter * marketPriceH);
+                pickedCountyH.mush = _counter;
 
 
-                players[3].addIncome(pickedCounty.income);
-                resultCounties.Add(pickedCounty);
+                playersH[3].addIncome(pickedCountyH.income);
+                resultCountiesH.Add(pickedCountyH);
                
             }
             else
@@ -71,59 +78,59 @@ namespace bead_program.UserControls
 
         private void HarvestTimer_Tick(object sender, EventArgs e)
         {
-            if (_counter == pickedCounty.mush)
+            if (_counter == pickedCountyH.mush)
             {
                 harvestTimer.Stop();
                 monthTimer.Stop();
                 btn_results.Enabled = true;
-                pickedCounty.income = (_counter * marketPrice);
-                pickedCounty.mush = _counter;
+                pickedCountyH.income = (_counter * marketPriceH);
+                pickedCountyH.mush = _counter;
 
 
-                players[3].addIncome(pickedCounty.income);
-                resultCounties.Add(pickedCounty);
+                playersH[3].addIncome(pickedCountyH.income);
+                resultCountiesH.Add(pickedCountyH);
 
             }
 
 
-            if (_counter%player.dogs== 0)
+            if (_counter%playerH.dogs== 0)
             {
                 harvestTimer.Interval += 5;
             }
 
-            double process = ((double)_counter / (double)pickedCounty.mush);
+            double process = ((double)_counter / (double)pickedCountyH.mush);
             lbl_processstatus.Text = Math.Round((process*100)).ToString() + "%";
 
             _counter++;
             lbl_mushcounter.Text = _counter.ToString();
-            lbl_cashcounter.Text = (_counter * marketPrice).ToString();
+            lbl_cashcounter.Text = (_counter * marketPriceH).ToString();
 
         }
 
 
         private void simulateAI()
         {
-            for (int i = 0; i < pickedCounties.Count; i++)
+            for (int i = 0; i < pickedCountiesH.Count; i++)
             {
-                if (pickedCounties[i].id != 4)
+                if (pickedCountiesH[i].ownerID != "4")
                 {
-                    int ownerID = int.Parse(pickedCounties[i].ownerID);
+                    int ownerID = int.Parse(pickedCountiesH[i].ownerID);
                     int pos = getPlayerPosById(ownerID);
-                    Player aiPlayer = players[pos];
+                    Player aiPlayer = playersH[pos];
 
-                    int gotmush = 22 * (int)Math.Round(aiPlayer.dogs * 1.5);
+                    int gotmush = 22 * (int)Math.Round(aiPlayer.dogs * 1.3);
 
-                    if (gotmush >= pickedCounties[i].mush)
+                    if (gotmush >= pickedCountiesH[i].mush)
                     {
-                        pickedCounties[i].income = pickedCounties[i].mush * marketPrice;
-                        players[pos].addIncome(pickedCounties[i].income);
-                        resultCounties.Add(pickedCounties[i]);
+                        pickedCountiesH[i].income = pickedCountiesH[i].mush * marketPriceH;
+                        playersH[pos].addIncome(pickedCountiesH[i].income);
+                        resultCountiesH.Add(pickedCountiesH[i]);
                     }
                     else
                     {
-                        pickedCounties[i].income = gotmush * marketPrice;
-                        players[pos].addIncome(pickedCounties[i].income);
-                        resultCounties.Add(pickedCounties[i]);
+                        pickedCountiesH[i].income = gotmush * marketPriceH;
+                        playersH[pos].addIncome(pickedCountiesH[i].income);
+                        resultCountiesH.Add(pickedCountiesH[i]);
                     }
 
                     
@@ -133,14 +140,12 @@ namespace bead_program.UserControls
             }
         }
 
-        
-
         public int getPlayerPosById(int id)
         {
             int temp = 0;
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 0; i < playersH.Count; i++)
             {
-                if (players[i].id == id)
+                if (playersH[i].id == id)
                 {
                     temp = i;
                 }
@@ -148,20 +153,18 @@ namespace bead_program.UserControls
             return temp;
         }
 
-
-
         public void buyDogsForAi()
         {
-            for (int i = 0; i < pickedCounties.Count; i++)
+            for (int i = 0; i < pickedCountiesH.Count; i++)
             {
-                int ownerID = int.Parse(pickedCounties[i].ownerID);
+                int ownerID = int.Parse(pickedCountiesH[i].ownerID);
                 int pos = getPlayerPosById(ownerID);
 
                 if (ownerID != 4)
                 {
-                    BuyDogResult temp = buyDogsAI(pickedCounties[i].income);
-                    players[pos].addIncome(-temp.spentMoney);
-                    players[pos].dogs += temp.boughtDogs;
+                    BuyDogResult temp = buyDogsAI(pickedCountiesH[i].income);
+                    playersH[pos].addIncome(-temp.spentMoney);
+                    playersH[pos].dogs += temp.boughtDogs;
                 }
 
 
@@ -173,13 +176,14 @@ namespace bead_program.UserControls
             int _boughtDogs = 0;
             int _spentMoney = 0;
 
-            if (income >= 1000000)
+            if (income >= 250000)
             {
-                double temp = income / 1000000;
+                int spendable = (int)Math.Round(income * 0.2);
+                double temp = spendable / 100000;
                 int num = (int)Math.Round(temp);
 
                 _boughtDogs = num;
-                _spentMoney = num * 1000000;
+                _spentMoney = num * 100000;
             }
 
             BuyDogResult result = new BuyDogResult()
@@ -215,8 +219,12 @@ namespace bead_program.UserControls
 
         private void btn_results_Click(object sender, EventArgs e)
         {
-            buyDogsForAi();
+            int a = 0;
             simulateAI();
+            buyDogsForAi();
+            
+
+            
             this.Parent.Controls.Clear();
         }
     }

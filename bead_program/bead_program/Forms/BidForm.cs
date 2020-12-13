@@ -149,7 +149,19 @@ namespace bead_program.Forms
         {
             if (string.Equals((sender as Button).Name, @"CloseButton"))
             {
-                //itt még handle kell
+                if (buyerID == 0)
+                {
+                    for (int i = 0; i < bidders.Count; i++)
+                    {
+                        if (bidders[i].id != 4)
+                        {
+                            buyerID = bidders[i].id;
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                    }
+                }
+                
             }
 
     
