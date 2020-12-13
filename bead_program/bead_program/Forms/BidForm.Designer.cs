@@ -50,13 +50,13 @@
             // 
             // lbl_biggestbiddername
             // 
-            this.lbl_biggestbiddername.AutoSize = true;
             this.lbl_biggestbiddername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_biggestbiddername.Location = new System.Drawing.Point(151, 292);
+            this.lbl_biggestbiddername.Location = new System.Drawing.Point(108, 291);
             this.lbl_biggestbiddername.Name = "lbl_biggestbiddername";
-            this.lbl_biggestbiddername.Size = new System.Drawing.Size(184, 25);
+            this.lbl_biggestbiddername.Size = new System.Drawing.Size(261, 29);
             this.lbl_biggestbiddername.TabIndex = 12;
             this.lbl_biggestbiddername.Text = "temp_biddername";
+            this.lbl_biggestbiddername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_biggestbid
             // 
@@ -81,13 +81,13 @@
             // 
             // lbl_value
             // 
-            this.lbl_value.AutoSize = true;
             this.lbl_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_value.Location = new System.Drawing.Point(160, 368);
+            this.lbl_value.Location = new System.Drawing.Point(100, 379);
             this.lbl_value.Name = "lbl_value";
-            this.lbl_value.Size = new System.Drawing.Size(154, 31);
+            this.lbl_value.Size = new System.Drawing.Size(282, 33);
             this.lbl_value.TabIndex = 9;
             this.lbl_value.Text = "temp_value";
+            this.lbl_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_startvalue
             // 
@@ -111,7 +111,6 @@
             // 
             // lbl_timer
             // 
-            this.lbl_timer.AutoSize = true;
             this.lbl_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_timer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_timer.Location = new System.Drawing.Point(219, 209);
@@ -119,6 +118,7 @@
             this.lbl_timer.Size = new System.Drawing.Size(44, 31);
             this.lbl_timer.TabIndex = 14;
             this.lbl_timer.Text = "10";
+            this.lbl_timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BidForm
             // 

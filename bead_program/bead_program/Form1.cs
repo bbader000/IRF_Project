@@ -38,11 +38,15 @@ namespace bead_program
             this.MinimizeBox = false;
             loadCounties();
 
+            year = 2015;
             btn_startharvest.Enabled = false;
             btn_startharvest.BackColor = Color.Transparent;
+            btn_yearresults.Enabled = false;
 
+            lbl_dogs.Text = players[3].dogs.ToString();
+            lbl_balance.Text = players[3].balance.ToString();
 
-            marketPrice = rn.Next(100000, 150000);
+            marketPrice = rn.Next(50000, 80000);
             panel_main.ControlRemoved += Panel_main_ControlRemoved;
 
 
@@ -117,24 +121,7 @@ namespace bead_program
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lbl_balance_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }
@@ -142,7 +129,31 @@ namespace bead_program
         private void btn_buydog_Click(object sender, EventArgs e)
         {
 
-           
+            if (players[3].balance - 1000000 >= 0)
+            {
+                players[3].BuyDog();
+                lbl_dogs.Text = players[3].dogs.ToString();
+                lbl_balance.Text = players[3].balance.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Nincs elég pénzed rá", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+        }  
+        
+        private void btn_selldog_Click(object sender, EventArgs e)
+        {
+            if (players[3].dogs != 10)
+            {
+                players[3].SellDog();
+                lbl_dogs.Text = players[3].dogs.ToString();
+                lbl_balance.Text = players[3].balance.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Neml lehet kevesebb mint 10 kutyád", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
 
         }
 
@@ -153,26 +164,22 @@ namespace bead_program
                 stage = 1;
                 btn_startharvest.Enabled = true;
                 btn_startharvest.BackColor = Color.Green;
-                
 
             }
             else if (stage == 1)
             {
-                
+                btn_yearresults.Enabled = true;
+                btn_startyear.Enabled = true;
+                lbl_balance.Text = players[3].balance.ToString();
             }
-           
-        }
-        
 
-       
-
-        private void btn_selldog_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btn_startyear_Click(object sender, EventArgs e)
         {
+            year++;
+            lbl_year.Text = year.ToString();
+
             btn_buydog.Enabled = false;
             btn_selldog.Enabled = false;
             btn_startyear.Enabled = false;
@@ -184,10 +191,16 @@ namespace bead_program
 
         private void btn_startharvest_Click(object sender, EventArgs e)
         {
+           
             btn_startharvest.Enabled = false;
             btn_startharvest.BackColor = Color.Transparent;
             Harvest harvest = new Harvest(counties[0], players[3], marketPrice, pickedCounties, players, resultCounties);
             panel_main.Controls.Add(harvest);
+        }
+
+        private void btn_yearresults_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

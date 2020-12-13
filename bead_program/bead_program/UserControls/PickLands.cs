@@ -374,18 +374,31 @@ namespace bead_program.UserControls
 
         private void btn_pick_Click(object sender, EventArgs e)
         {
-            btn_pick.Enabled = false;
-            btn_pass.Enabled = false;
-            btn_startyear.Enabled = true;
-
             County county = (County)dgw_lands.CurrentRow.DataBoundItem;
-            county.setOwner(players[3].name, players[3].id);
-                
-            pickLandsFirst();
-            checkIfBid();
-            btn_startyear.Enabled = true;
+
+            if (county.value > players[3].balance)
+            {
+                MessageBox.Show("Nincs elég pénzed a megyére, válassz másikat", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                btn_pick.Enabled = false;
+                btn_pass.Enabled = false;
+                btn_startyear.Enabled = true;
+
+
+                county.setOwner(players[3].name, players[3].id);
+
+                pickLandsFirst();
+                checkIfBid();
+                btn_startyear.Enabled = true;
+            }
+
+
+            
 
         }
+
         private void btn_pass_Click(object sender, EventArgs e)
         {
             btn_pick.Enabled = false;

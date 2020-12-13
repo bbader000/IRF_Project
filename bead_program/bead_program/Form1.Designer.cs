@@ -39,6 +39,7 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.btn_startyear = new System.Windows.Forms.Button();
             this.btn_startharvest = new System.Windows.Forms.Button();
+            this.btn_yearresults = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_actualyear
@@ -63,13 +64,13 @@
             // 
             // lbl_dogs
             // 
-            this.lbl_dogs.AutoSize = true;
             this.lbl_dogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_dogs.Location = new System.Drawing.Point(923, 182);
+            this.lbl_dogs.Location = new System.Drawing.Point(891, 182);
             this.lbl_dogs.Name = "lbl_dogs";
-            this.lbl_dogs.Size = new System.Drawing.Size(29, 31);
+            this.lbl_dogs.Size = new System.Drawing.Size(86, 43);
             this.lbl_dogs.TabIndex = 6;
             this.lbl_dogs.Text = "0";
+            this.lbl_dogs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_numberofdogs
             // 
@@ -83,13 +84,13 @@
             // 
             // lbl_balance
             // 
-            this.lbl_balance.AutoSize = true;
-            this.lbl_balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_balance.Location = new System.Drawing.Point(923, 451);
+            this.lbl_balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_balance.Location = new System.Drawing.Point(853, 457);
             this.lbl_balance.Name = "lbl_balance";
-            this.lbl_balance.Size = new System.Drawing.Size(29, 31);
+            this.lbl_balance.Size = new System.Drawing.Size(174, 28);
             this.lbl_balance.TabIndex = 7;
             this.lbl_balance.Text = "0";
+            this.lbl_balance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_balance.Click += new System.EventHandler(this.lbl_balance_Click);
             // 
             // lbl_currentbalance
@@ -151,11 +152,23 @@
             this.btn_startharvest.UseVisualStyleBackColor = true;
             this.btn_startharvest.Click += new System.EventHandler(this.btn_startharvest_Click);
             // 
+            // btn_yearresults
+            // 
+            this.btn_yearresults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_yearresults.Location = new System.Drawing.Point(12, 577);
+            this.btn_yearresults.Name = "btn_yearresults";
+            this.btn_yearresults.Size = new System.Drawing.Size(210, 40);
+            this.btn_yearresults.TabIndex = 15;
+            this.btn_yearresults.Text = "Éves érékelő exportálás";
+            this.btn_yearresults.UseVisualStyleBackColor = true;
+            this.btn_yearresults.Click += new System.EventHandler(this.btn_yearresults_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 610);
+            this.ClientSize = new System.Drawing.Size(1034, 629);
+            this.Controls.Add(this.btn_yearresults);
             this.Controls.Add(this.btn_startharvest);
             this.Controls.Add(this.btn_startyear);
             this.Controls.Add(this.panel_main);
@@ -187,6 +200,7 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Button btn_startyear;
         private System.Windows.Forms.Button btn_startharvest;
+        private System.Windows.Forms.Button btn_yearresults;
     }
 }
 

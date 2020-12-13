@@ -39,37 +39,38 @@
             // 
             // lbl_countyname
             // 
-            this.lbl_countyname.AutoSize = true;
             this.lbl_countyname.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_countyname.Location = new System.Drawing.Point(25, 61);
             this.lbl_countyname.Name = "lbl_countyname";
             this.lbl_countyname.Size = new System.Drawing.Size(237, 31);
             this.lbl_countyname.TabIndex = 0;
             this.lbl_countyname.Text = "temp_countyname";
+            this.lbl_countyname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_countyname.Click += new System.EventHandler(this.lbl_countyname_Click);
             // 
             // lbl_startvalue
             // 
-            this.lbl_startvalue.AutoSize = true;
             this.lbl_startvalue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_startvalue.Location = new System.Drawing.Point(29, 107);
             this.lbl_startvalue.Name = "lbl_startvalue";
             this.lbl_startvalue.Size = new System.Drawing.Size(165, 25);
             this.lbl_startvalue.TabIndex = 1;
             this.lbl_startvalue.Text = "temp_startvalue";
+            this.lbl_startvalue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_value
             // 
-            this.lbl_value.AutoSize = true;
             this.lbl_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_value.Location = new System.Drawing.Point(157, 344);
             this.lbl_value.Name = "lbl_value";
             this.lbl_value.Size = new System.Drawing.Size(154, 31);
             this.lbl_value.TabIndex = 2;
             this.lbl_value.Text = "temp_value";
+            this.lbl_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_bid
             // 
+            this.btn_bid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_bid.Location = new System.Drawing.Point(114, 433);
             this.btn_bid.Name = "btn_bid";
             this.btn_bid.Size = new System.Drawing.Size(239, 67);
@@ -79,33 +80,33 @@
             // 
             // lbl_biggestbid
             // 
-            this.lbl_biggestbid.AutoSize = true;
             this.lbl_biggestbid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_biggestbid.Location = new System.Drawing.Point(176, 236);
             this.lbl_biggestbid.Name = "lbl_biggestbid";
             this.lbl_biggestbid.Size = new System.Drawing.Size(129, 16);
             this.lbl_biggestbid.TabIndex = 4;
             this.lbl_biggestbid.Text = "Legnagyobb licitáló:";
+            this.lbl_biggestbid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_biggestbiddername
             // 
-            this.lbl_biggestbiddername.AutoSize = true;
             this.lbl_biggestbiddername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_biggestbiddername.Location = new System.Drawing.Point(148, 268);
             this.lbl_biggestbiddername.Name = "lbl_biggestbiddername";
             this.lbl_biggestbiddername.Size = new System.Drawing.Size(184, 25);
             this.lbl_biggestbiddername.TabIndex = 5;
             this.lbl_biggestbiddername.Text = "temp_biddername";
+            this.lbl_biggestbiddername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_title
             // 
-            this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl_title.Location = new System.Drawing.Point(179, 14);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(113, 31);
             this.lbl_title.TabIndex = 6;
             this.lbl_title.Text = "Licitálás";
+            this.lbl_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PlayerBid
             // 
@@ -122,7 +123,6 @@
             this.Size = new System.Drawing.Size(458, 591);
             this.Load += new System.EventHandler(this.PlayerBid_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -29,8 +29,6 @@ namespace bead_program
         private void btn_start_Click(object sender, EventArgs e)
         {
 
-
-
             this.name = "ASd";
             this.DialogResult = DialogResult.OK;
             this.Close();

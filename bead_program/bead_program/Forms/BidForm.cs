@@ -24,7 +24,7 @@ namespace bead_program.Forms
         public int buyerID;
         Random rn = new Random();
         Timer timerMain = new Timer();
-       
+
 
         public BidForm(BindingList<County> counties, BindingList<Player> players, List<Player> bidders, int county)
         {
@@ -34,7 +34,7 @@ namespace bead_program.Forms
             this.county = county;
 
 
-            
+
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -57,7 +57,7 @@ namespace bead_program.Forms
         {
             for (int i = 0; i < bidders.Count; i++)
             {
-                if (bidders[i].id ==4 )
+                if (bidders[i].id == 4)
                 {
                     bidders.RemoveAt(i);
                 }
@@ -79,7 +79,7 @@ namespace bead_program.Forms
             {
                 lbl_timer.ForeColor = Color.Red;
             }
-           
+
 
             lbl_timer.Text = (10 - _tickCounter).ToString();
 
@@ -110,12 +110,12 @@ namespace bead_program.Forms
                             lbl_timer.ForeColor = Color.Black;
                         }
                     }
-                    
+
                 }
             }
 
             _tickCounter++;
-            
+
         }
 
         private void BidForm_Load(object sender, EventArgs e)
@@ -125,13 +125,36 @@ namespace bead_program.Forms
 
         private void btn_bid_Click(object sender, EventArgs e)
         {
-            _tickCounter = 0;
-            lbl_timer.Text = (10 - _tickCounter).ToString();
-            currentValue += 500000;
-            lbl_value.Text = currentValue.ToString();
-            lbl_biggestbiddername.Text = players[3].name;
-            buyerID = players[3].id;
-            lbl_timer.ForeColor = Color.Black;
+            if (currentValue + 500000 > players[3].balance)
+            {
+                MessageBox.Show("Nincs elég pénzed", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _tickCounter = 0;
+                lbl_timer.Text = (10 - _tickCounter).ToString();
+                currentValue += 500000;
+                lbl_value.Text = currentValue.ToString();
+                lbl_biggestbiddername.Text = players[3].name;
+                buyerID = players[3].id;
+                lbl_timer.ForeColor = Color.Black;
+            }
+
+
+        }
+
+
+
+        private void BidForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (string.Equals((sender as Button).Name, @"CloseButton"))
+            {
+                //itt még handle kell
+            }
+
+    
+
+
         }
     }
 }
