@@ -30,7 +30,7 @@
         {
             this.btn_pass = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_pick = new System.Windows.Forms.Button();
             this.dgw_lands = new System.Windows.Forms.DataGridView();
             this.County = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,14 +59,15 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "label1";
             // 
-            // button1
+            // btn_pick
             // 
-            this.button1.Location = new System.Drawing.Point(60, 458);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 51);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_pick.Location = new System.Drawing.Point(60, 458);
+            this.btn_pick.Name = "btn_pick";
+            this.btn_pick.Size = new System.Drawing.Size(175, 51);
+            this.btn_pick.TabIndex = 13;
+            this.btn_pick.Text = "Választ";
+            this.btn_pick.UseVisualStyleBackColor = true;
+            this.btn_pick.Click += new System.EventHandler(this.btn_pick_Click);
             // 
             // dgw_lands
             // 
@@ -111,7 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btn_pass);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_pick);
             this.Controls.Add(this.dgw_lands);
             this.Name = "PickLands";
             this.Size = new System.Drawing.Size(830, 530);
@@ -126,7 +127,7 @@
 
         private System.Windows.Forms.Button btn_pass;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_pick;
         private System.Windows.Forms.DataGridView dgw_lands;
         private System.Windows.Forms.DataGridViewTextBoxColumn County;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

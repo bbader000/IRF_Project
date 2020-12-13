@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.County = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ForestCoverage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rain = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbl_actualyear = new System.Windows.Forms.Label();
             this.lbl_year = new System.Windows.Forms.Label();
             this.lbl_dogs = new System.Windows.Forms.Label();
@@ -43,67 +36,8 @@
             this.lbl_currentbalance = new System.Windows.Forms.Label();
             this.btn_buydog = new System.Windows.Forms.Button();
             this.btn_selldog = new System.Windows.Forms.Button();
-            this.btn_pick = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel_main = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.County,
-            this.Column1,
-            this.ForestCoverage,
-            this.Rain});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(710, 397);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // County
-            // 
-            this.County.DataPropertyName = "name";
-            this.County.HeaderText = "Megye";
-            this.County.Name = "County";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "area";
-            this.Column1.HeaderText = "Terület (km2)";
-            this.Column1.Name = "Column1";
-            // 
-            // ForestCoverage
-            // 
-            this.ForestCoverage.DataPropertyName = "forest";
-            this.ForestCoverage.HeaderText = "Erdős terület";
-            this.ForestCoverage.Name = "ForestCoverage";
-            // 
-            // Rain
-            // 
-            this.Rain.DataPropertyName = "rain";
-            this.Rain.HeaderText = "Éves csapadék";
-            this.Rain.Name = "Rain";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 472);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lbl_actualyear
             // 
@@ -174,6 +108,7 @@
             this.btn_buydog.TabIndex = 9;
             this.btn_buydog.Text = "Kutya vétel";
             this.btn_buydog.UseVisualStyleBackColor = true;
+            this.btn_buydog.Click += new System.EventHandler(this.btn_buydog_Click);
             // 
             // btn_selldog
             // 
@@ -183,30 +118,21 @@
             this.btn_selldog.TabIndex = 10;
             this.btn_selldog.Text = "Kutya eladás";
             this.btn_selldog.UseVisualStyleBackColor = true;
+            this.btn_selldog.Click += new System.EventHandler(this.btn_selldog_Click);
             // 
-            // btn_pick
+            // panel_main
             // 
-            this.btn_pick.Location = new System.Drawing.Point(217, 472);
-            this.btn_pick.Name = "btn_pick";
-            this.btn_pick.Size = new System.Drawing.Size(175, 51);
-            this.btn_pick.TabIndex = 11;
-            this.btn_pick.Text = "Választ";
-            this.btn_pick.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(41, 581);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(830, 530);
-            this.panel1.TabIndex = 12;
+            this.panel_main.Location = new System.Drawing.Point(12, 30);
+            this.panel_main.Name = "panel_main";
+            this.panel_main.Size = new System.Drawing.Size(830, 530);
+            this.panel_main.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 610);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn_pick);
+            this.Controls.Add(this.panel_main);
             this.Controls.Add(this.btn_selldog);
             this.Controls.Add(this.btn_buydog);
             this.Controls.Add(this.lbl_currentbalance);
@@ -215,27 +141,15 @@
             this.Controls.Add(this.lbl_numberofdogs);
             this.Controls.Add(this.lbl_year);
             this.Controls.Add(this.lbl_actualyear);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn County;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ForestCoverage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rain;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_actualyear;
         private System.Windows.Forms.Label lbl_year;
         private System.Windows.Forms.Label lbl_dogs;
@@ -244,8 +158,7 @@
         private System.Windows.Forms.Label lbl_currentbalance;
         private System.Windows.Forms.Button btn_buydog;
         private System.Windows.Forms.Button btn_selldog;
-        private System.Windows.Forms.Button btn_pick;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_main;
     }
 }
 

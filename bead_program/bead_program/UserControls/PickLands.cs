@@ -353,5 +353,10 @@ namespace bead_program.UserControls
 
             return player;
         }
+
+        private void btn_pick_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Clear();
+        }
     }
 }
