@@ -18,8 +18,9 @@ namespace bead_program.UserControls
 
         public BindingList<County> counties { get; set; }
         public BindingList<County> pickedCounties { get; set; }
+        public BindingList<County> countyResult { get; set; }
         public BindingList<Player> players { get; set; }
-
+        public bool isPlayerPicked;
 
         public Random rn = new Random();
 
@@ -32,8 +33,9 @@ namespace bead_program.UserControls
             this.players = players;
             dgw_lands.DataSource = counties;
             dgw_lands.Columns["id"].Visible = false;
-            dgw_lands.Columns["mush"].Visible = false;
-
+            //dgw_lands.Columns["mush"].Visible = false;
+            btn_startyear.Enabled = false;
+            btn_startyear.Enabled = false;
 
 
 
@@ -46,13 +48,6 @@ namespace bead_program.UserControls
         {
 
         }
-
-        private void btn_pass_Click(object sender, EventArgs e)
-        {
-            pickLandsFirst();
-            checkIfBid();
-        }
-
 
         private void checkIfBid()
         {
@@ -85,6 +80,20 @@ namespace bead_program.UserControls
 
         }
 
+        private void buyLands()
+        {
+            for (int i = 0; i < counties.Count; i++)
+            {
+                if (counties[i].ownerID != null)
+                {
+                    players[getPlayerPosById(int.Parse(counties[i].ownerID))].BuyLand(counties[i].value);
+                    pickedCounties.Add(counties[i]);
+                    counties.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
         private void bidPlayer(string[] temp, int county)
         {
 
@@ -104,17 +113,23 @@ namespace bead_program.UserControls
                 bidWinnerPick(county, bidForm.currentValue, bidForm.buyerID);
                 dgw_lands.Refresh();
 
+
+                if (bidForm.buyerID != 4)
+                {
+                    newPick(getPlayerPosById(4));
+                }
+
                 for (int i = 0; i < bidders.Count; i++)
                 {
                     if (bidders[i].id != bidForm.buyerID)
                     {
-                        if (bidders[i].id != 4)
-                        {
-                            newPick(getPlayerPosById(bidders[i].id));
-                        }
-
+                        newPick(getPlayerPosById(bidders[i].id));
                     }
+                    dgw_lands.Refresh();
                 }
+
+                
+
 
 
 
@@ -190,9 +205,11 @@ namespace bead_program.UserControls
 
         public void bidWinnerPick(int county, int currentValue, int buyerID)
         {
-            counties[county].ownerID = buyerID.ToString();
             Player buyerPlayer = getPlayerById(buyerID);
+            counties[county].ownerID = buyerPlayer.id.ToString();
             counties[county].owner = buyerPlayer.name;
+
+            counties[county].oldvalue = counties[county].value;
             counties[county].value = currentValue;
         }
 
@@ -226,6 +243,7 @@ namespace bead_program.UserControls
             int[] ids = getIdOrder();
             for (int i = 0; i < ids.Length; i++)
             {
+                //System.Threading.Thread.Sleep(1000);
                 for (int j = 0; j < players.Count; j++)
                 {
 
@@ -238,8 +256,8 @@ namespace bead_program.UserControls
                             bool wannaFight = checkOwner(j, temp);
                             if (wannaFight)
                             {
-                                counties[temp].ownerID = counties[temp].ownerID.ToString() + ";" + players[j].id;
-                                counties[temp].owner = counties[temp].owner + ", " + players[j].name;
+                                counties[temp].setOwner(players[j].name, players[j].id);
+
                             }
                             else
                             {
@@ -248,8 +266,8 @@ namespace bead_program.UserControls
                         }
                         else
                         {
-                            counties[temp].ownerID = players[j].id.ToString();
-                            counties[temp].owner = players[j].name;
+                            counties[temp].setOwner(players[j].name, players[j].id);
+
                             break;
                         }
 
@@ -257,9 +275,9 @@ namespace bead_program.UserControls
                     }
 
                 }
-
+                dgw_lands.Refresh();
             }
-            dgw_lands.Refresh();
+            
 
         }
 
@@ -289,8 +307,8 @@ namespace bead_program.UserControls
                     int newPick = rn.Next(0, counties.Count);
                     if (counties[newPick].owner == null)
                     {
-                        counties[newPick].ownerID = players[j].id.ToString();
-                        counties[newPick].owner = players[j].name;
+                        counties[newPick].setOwner(players[j].name, players[j].id);
+
                         ok = false;
                     }
                 }
@@ -356,7 +374,47 @@ namespace bead_program.UserControls
 
         private void btn_pick_Click(object sender, EventArgs e)
         {
+            btn_pick.Enabled = false;
+            btn_pass.Enabled = false;
+            btn_startyear.Enabled = true;
+
+            County county = (County)dgw_lands.CurrentRow.DataBoundItem;
+            county.setOwner(players[3].name, players[3].id);
+                
+            pickLandsFirst();
+            checkIfBid();
+            btn_startyear.Enabled = true;
+
+        }
+        private void btn_pass_Click(object sender, EventArgs e)
+        {
+            btn_pick.Enabled = false;
+            btn_pass.Enabled = false;
+            btn_startyear.Enabled = true;
+
+            pickLandsFirst();
+            checkIfBid();
+            btn_startyear.Enabled = true;
+        }
+
+        private void btn_startyear_Click(object sender, EventArgs e)
+        {
+            checkIfPlayerPlay();
+            buyLands();
             this.Parent.Controls.Clear();
+
+        }
+
+        private void checkIfPlayerPlay()
+        {
+            for (int i = 0; i < pickedCounties.Count; i++)
+            {
+                if (pickedCounties[i].id == 4)
+                {
+                    isPlayerPicked = true;
+                    break;
+                }
+            }
         }
     }
 }

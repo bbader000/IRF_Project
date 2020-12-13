@@ -17,10 +17,13 @@ namespace bead_program
 {
     public partial class Form1 : Form
     {
+        public int stage;
         public string playerName;
         public int year;
+        public int marketPrice;
         public BindingList<County> counties = new BindingList<County>();
         public BindingList<County> pickedCounties = new BindingList<County>();
+        public BindingList<County> resultCounties = new BindingList<County>();
         public BindingList<Player> players = new BindingList<Player>();
         Random rn = new Random();
         
@@ -34,7 +37,13 @@ namespace bead_program
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             loadCounties();
-            
+
+            btn_startharvest.Enabled = false;
+            btn_startharvest.BackColor = Color.Transparent;
+
+
+            marketPrice = rn.Next(100000, 150000);
+            panel_main.ControlRemoved += Panel_main_ControlRemoved;
 
 
 
@@ -93,6 +102,9 @@ namespace bead_program
                     value = 3000000
                 }
                 );
+
+                counties[i - 1].calculatePrice();
+                counties[i - 1].calculateMush();
                 i++;
                 
 
@@ -111,13 +123,6 @@ namespace bead_program
 
         }
 
-       
-
-       
-
-        
-
-        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -136,22 +141,53 @@ namespace bead_program
 
         private void btn_buydog_Click(object sender, EventArgs e)
         {
-            PickLands pickLand = new PickLands(counties, pickedCounties, players);
-            panel_main.Controls.Add(pickLand);
+
            
-            panel_main.ControlRemoved += Panel_main_ControlRemoved;
+
         }
 
         private void Panel_main_ControlRemoved(object sender, ControlEventArgs e)
         {
-           //vége a választásnak
-        }
+            if (stage == 0)
+            {
+                stage = 1;
+                btn_startharvest.Enabled = true;
+                btn_startharvest.BackColor = Color.Green;
+                
 
+            }
+            else if (stage == 1)
+            {
+                
+            }
+           
+        }
         
+
+       
 
         private void btn_selldog_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void btn_startyear_Click(object sender, EventArgs e)
+        {
+            btn_buydog.Enabled = false;
+            btn_selldog.Enabled = false;
+            btn_startyear.Enabled = false;
+            pickedCounties.Clear();
+            stage = 0;
+            PickLands pickLand = new PickLands(counties, pickedCounties, players);
+            panel_main.Controls.Add(pickLand);
+        }
+
+        private void btn_startharvest_Click(object sender, EventArgs e)
+        {
+            btn_startharvest.Enabled = false;
+            btn_startharvest.BackColor = Color.Transparent;
+            Harvest harvest = new Harvest(counties[0], players[3], marketPrice, pickedCounties, players, resultCounties);
+            panel_main.Controls.Add(harvest);
         }
     }
 }

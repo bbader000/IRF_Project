@@ -29,5 +29,10 @@ namespace bead_program.Entities
         {
             this.balance -= price;
         }
+
+        public void addIncome(int income)
+        {
+            this.balance += income;
+        }
     }
 }

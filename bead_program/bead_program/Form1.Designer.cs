@@ -37,6 +37,8 @@
             this.btn_buydog = new System.Windows.Forms.Button();
             this.btn_selldog = new System.Windows.Forms.Button();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.btn_startyear = new System.Windows.Forms.Button();
+            this.btn_startharvest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_actualyear
@@ -83,7 +85,7 @@
             // 
             this.lbl_balance.AutoSize = true;
             this.lbl_balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_balance.Location = new System.Drawing.Point(927, 460);
+            this.lbl_balance.Location = new System.Drawing.Point(923, 451);
             this.lbl_balance.Name = "lbl_balance";
             this.lbl_balance.Size = new System.Drawing.Size(29, 31);
             this.lbl_balance.TabIndex = 7;
@@ -127,11 +129,35 @@
             this.panel_main.Size = new System.Drawing.Size(830, 530);
             this.panel_main.TabIndex = 12;
             // 
+            // btn_startyear
+            // 
+            this.btn_startyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_startyear.Location = new System.Drawing.Point(871, 558);
+            this.btn_startyear.Name = "btn_startyear";
+            this.btn_startyear.Size = new System.Drawing.Size(138, 40);
+            this.btn_startyear.TabIndex = 13;
+            this.btn_startyear.Text = "Év kezdése";
+            this.btn_startyear.UseVisualStyleBackColor = true;
+            this.btn_startyear.Click += new System.EventHandler(this.btn_startyear_Click);
+            // 
+            // btn_startharvest
+            // 
+            this.btn_startharvest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_startharvest.Location = new System.Drawing.Point(871, 500);
+            this.btn_startharvest.Name = "btn_startharvest";
+            this.btn_startharvest.Size = new System.Drawing.Size(138, 40);
+            this.btn_startharvest.TabIndex = 14;
+            this.btn_startharvest.Text = "Szüret kezdése";
+            this.btn_startharvest.UseVisualStyleBackColor = true;
+            this.btn_startharvest.Click += new System.EventHandler(this.btn_startharvest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 610);
+            this.Controls.Add(this.btn_startharvest);
+            this.Controls.Add(this.btn_startyear);
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.btn_selldog);
             this.Controls.Add(this.btn_buydog);
@@ -159,6 +185,8 @@
         private System.Windows.Forms.Button btn_buydog;
         private System.Windows.Forms.Button btn_selldog;
         private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.Button btn_startyear;
+        private System.Windows.Forms.Button btn_startharvest;
     }
 }
 

@@ -36,6 +36,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ForestCoverage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_startyear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_lands)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,11 +62,12 @@
             // 
             // btn_pick
             // 
+            this.btn_pick.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_pick.Location = new System.Drawing.Point(60, 458);
             this.btn_pick.Name = "btn_pick";
             this.btn_pick.Size = new System.Drawing.Size(175, 51);
             this.btn_pick.TabIndex = 13;
-            this.btn_pick.Text = "Választ";
+            this.btn_pick.Text = "Megye választása";
             this.btn_pick.UseVisualStyleBackColor = true;
             this.btn_pick.Click += new System.EventHandler(this.btn_pick_Click);
             // 
@@ -106,10 +108,22 @@
             this.Rain.HeaderText = "Éves csapadék";
             this.Rain.Name = "Rain";
             // 
+            // btn_startyear
+            // 
+            this.btn_startyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btn_startyear.Location = new System.Drawing.Point(595, 458);
+            this.btn_startyear.Name = "btn_startyear";
+            this.btn_startyear.Size = new System.Drawing.Size(175, 51);
+            this.btn_startyear.TabIndex = 16;
+            this.btn_startyear.Text = "Tovább";
+            this.btn_startyear.UseVisualStyleBackColor = true;
+            this.btn_startyear.Click += new System.EventHandler(this.btn_startyear_Click);
+            // 
             // PickLands
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_startyear);
             this.Controls.Add(this.btn_pass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_pick);
@@ -133,5 +147,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ForestCoverage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rain;
+        private System.Windows.Forms.Button btn_startyear;
     }
 }
