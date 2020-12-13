@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using bead_program.Entities;
+using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using bead_program.Entities;
 
 namespace bead_program.UserControls
 {
@@ -136,12 +130,15 @@ namespace bead_program.UserControls
                         players[pos].addIncome(pickedCounties[i].income);
                         resultCounties.Add(pickedCounties[i]);
                     }
+
+                    
                 }
 
 
             }
         }
 
+        
 
         public int getPlayerPosById(int id)
         {
@@ -183,4 +180,7 @@ namespace bead_program.UserControls
             this.Parent.Controls.Clear();
         }
     }
+
+
+    
 }

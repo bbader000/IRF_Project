@@ -91,7 +91,7 @@ namespace bead_program
 
         void loadCounties()
         {
-            XDocument xdocument = XDocument.Load("countydata.xml");
+            XDocument xdocument = XDocument.Load(@"C:\Temp\countydata.xml");
             IEnumerable<XElement> data = xdocument.Root.Elements();
             int i = 1;
             foreach (var row in data)
@@ -157,7 +157,7 @@ namespace bead_program
 
         }
 
-        private void Panel_main_ControlRemoved(object sender, ControlEventArgs e)
+        public void Panel_main_ControlRemoved(object sender, ControlEventArgs e)
         {
             if (stage == 0)
             {
@@ -168,10 +168,55 @@ namespace bead_program
             }
             else if (stage == 1)
             {
+                buyDogsForAi();
                 btn_yearresults.Enabled = true;
                 btn_startyear.Enabled = true;
                 lbl_balance.Text = players[3].balance.ToString();
+                
             }
+
+        }
+
+        public void buyDogsForAi()
+        {
+            for (int i = 0; i < pickedCounties.Count; i++)
+            {
+                int ownerID = int.Parse(pickedCounties[i].ownerID);
+                int pos = getPlayerPosById(ownerID);
+
+                if (ownerID != 4)
+                {
+                    BuyDogResult temp = buyDogsAI(pickedCounties[i].income);
+                    players[pos].addIncome(-temp.spentMoney);
+                    players[pos].dogs += temp.boughtDogs;
+                }
+
+                
+            }
+        }
+
+        public BuyDogResult buyDogsAI(int income)
+        {
+            int _boughtDogs = 0;
+            int _spentMoney = 0;
+
+            if (income >= 1000000)
+            {
+                double temp = income / 1000000;
+                int num = (int)Math.Round(temp);
+
+                _boughtDogs = num;
+                _spentMoney = num * 1000000;
+            }
+
+            BuyDogResult result = new BuyDogResult()
+            {
+                boughtDogs = _boughtDogs,
+                spentMoney = _spentMoney
+            };
+
+            return result;
+
 
         }
 
@@ -202,5 +247,24 @@ namespace bead_program
         {
 
         }
+
+        public int getPlayerPosById(int id)
+        {
+            int temp = 0;
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].id == id)
+                {
+                    temp = i;
+                }
+            }
+            return temp;
+        }
+    }
+
+    public class BuyDogResult
+    { 
+        public int boughtDogs { get; set; }
+        public int spentMoney { get; set; }
     }
 }

@@ -8,3 +8,8 @@ Minden kör egy évnek felel meg, melynek elején a versenyzők licitálnak, hog
 Ha mindenkinek sikeresen lesz joga, akkor elindul a szarvasgomba keresés, ezt a versenyzők kutyákkal tehetik meg, amiket pénzért vehetnek. A szarvasgomba azonnal eladásra kerül.
 
 Az összes év végén (5), a legtöbb pénzel endelkező játékos nyer. Ahol egyszer már lett szedve szarvasgomba, ott 5 éven velül nem kezdődhet új szüret.
+
+
+---- FONTOS -----
+
+A fő mappában található "countydata.xml" - fájlt, át kell másolni a "C:\Temp" mappába.

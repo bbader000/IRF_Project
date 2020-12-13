@@ -20,7 +20,7 @@ namespace bead_program.Entities
         }
 
 
-        public  void BuyDog()
+        public void BuyDog()
         {
             this.balance -= 1000000;
             this.dogs += 10;
