@@ -36,6 +36,7 @@ namespace bead_program.Forms
 
 
             InitializeComponent();
+            this.FormClosed += BidForm_FormClosed;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -51,6 +52,25 @@ namespace bead_program.Forms
             startBid();
 
 
+        }
+
+        private void BidForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+                if (buyerID == 0)
+                {
+                    for (int i = 0; i < bidders.Count; i++)
+                    {
+                        if (bidders[i].id != 4)
+                        {
+                            buyerID = bidders[i].id;
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                    }
+                }
+
+            
         }
 
         private void removePlayer()
@@ -145,28 +165,7 @@ namespace bead_program.Forms
 
 
 
-        private void BidForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (string.Equals((sender as Button).Name, @"CloseButton"))
-            {
-                if (buyerID == 0)
-                {
-                    for (int i = 0; i < bidders.Count; i++)
-                    {
-                        if (bidders[i].id != 4)
-                        {
-                            buyerID = bidders[i].id;
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                    }
-                }
-                
-            }
-
-    
-
-
-        }
+        
+       
     }
 }

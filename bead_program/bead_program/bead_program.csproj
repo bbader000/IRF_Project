@@ -119,11 +119,20 @@
     <Compile Include="Forms\UserNameForm.Designer.cs">
       <DependentUpon>UserNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ResultField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ResultField.Designer.cs">
+      <DependentUpon>ResultField.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BidForm.resx">
       <DependentUpon>BidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResultForm.resx">
+      <DependentUpon>ResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserNameForm.resx">
       <DependentUpon>UserNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ResultField.resx">
+      <DependentUpon>ResultField.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

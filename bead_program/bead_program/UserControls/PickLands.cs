@@ -37,7 +37,7 @@ namespace bead_program.UserControls
             btn_startyear.Enabled = false;
             btn_startyear.Enabled = false;
 
-
+            pickLandsFirst();
 
 
 
@@ -386,11 +386,11 @@ namespace bead_program.UserControls
                 btn_pass.Enabled = false;
                 btn_startyear.Enabled = true;
 
-
+                //pickLandsFirst();
+                
                 county.setOwner(players[3].name, players[3].id);
-
-                pickLandsFirst();
                 checkIfBid();
+
                 btn_startyear.Enabled = true;
             }
 

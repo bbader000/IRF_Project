@@ -40,13 +40,14 @@
             this.btn_startyear = new System.Windows.Forms.Button();
             this.btn_startharvest = new System.Windows.Forms.Button();
             this.btn_yearresults = new System.Windows.Forms.Button();
+            this.lbl_playername = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_actualyear
             // 
             this.lbl_actualyear.AutoSize = true;
             this.lbl_actualyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_actualyear.Location = new System.Drawing.Point(888, 30);
+            this.lbl_actualyear.Location = new System.Drawing.Point(892, 60);
             this.lbl_actualyear.Name = "lbl_actualyear";
             this.lbl_actualyear.Size = new System.Drawing.Size(89, 20);
             this.lbl_actualyear.TabIndex = 3;
@@ -56,7 +57,7 @@
             // 
             this.lbl_year.AutoSize = true;
             this.lbl_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_year.Location = new System.Drawing.Point(897, 68);
+            this.lbl_year.Location = new System.Drawing.Point(901, 98);
             this.lbl_year.Name = "lbl_year";
             this.lbl_year.Size = new System.Drawing.Size(74, 31);
             this.lbl_year.TabIndex = 4;
@@ -65,7 +66,7 @@
             // lbl_dogs
             // 
             this.lbl_dogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_dogs.Location = new System.Drawing.Point(891, 182);
+            this.lbl_dogs.Location = new System.Drawing.Point(895, 212);
             this.lbl_dogs.Name = "lbl_dogs";
             this.lbl_dogs.Size = new System.Drawing.Size(86, 43);
             this.lbl_dogs.TabIndex = 6;
@@ -76,7 +77,7 @@
             // 
             this.lbl_numberofdogs.AutoSize = true;
             this.lbl_numberofdogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_numberofdogs.Location = new System.Drawing.Point(879, 146);
+            this.lbl_numberofdogs.Location = new System.Drawing.Point(883, 176);
             this.lbl_numberofdogs.Name = "lbl_numberofdogs";
             this.lbl_numberofdogs.Size = new System.Drawing.Size(112, 20);
             this.lbl_numberofdogs.TabIndex = 5;
@@ -105,7 +106,7 @@
             // 
             // btn_buydog
             // 
-            this.btn_buydog.Location = new System.Drawing.Point(888, 262);
+            this.btn_buydog.Location = new System.Drawing.Point(892, 292);
             this.btn_buydog.Name = "btn_buydog";
             this.btn_buydog.Size = new System.Drawing.Size(96, 41);
             this.btn_buydog.TabIndex = 9;
@@ -115,7 +116,7 @@
             // 
             // btn_selldog
             // 
-            this.btn_selldog.Location = new System.Drawing.Point(888, 321);
+            this.btn_selldog.Location = new System.Drawing.Point(892, 351);
             this.btn_selldog.Name = "btn_selldog";
             this.btn_selldog.Size = new System.Drawing.Size(96, 41);
             this.btn_selldog.TabIndex = 10;
@@ -163,11 +164,22 @@
             this.btn_yearresults.UseVisualStyleBackColor = true;
             this.btn_yearresults.Click += new System.EventHandler(this.btn_yearresults_Click);
             // 
+            // lbl_playername
+            // 
+            this.lbl_playername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl_playername.Location = new System.Drawing.Point(859, 14);
+            this.lbl_playername.Name = "lbl_playername";
+            this.lbl_playername.Size = new System.Drawing.Size(154, 31);
+            this.lbl_playername.TabIndex = 16;
+            this.lbl_playername.Text = "temp_playernane";
+            this.lbl_playername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 629);
+            this.Controls.Add(this.lbl_playername);
             this.Controls.Add(this.btn_yearresults);
             this.Controls.Add(this.btn_startharvest);
             this.Controls.Add(this.btn_startyear);
@@ -181,7 +193,6 @@
             this.Controls.Add(this.lbl_year);
             this.Controls.Add(this.lbl_actualyear);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,6 +212,7 @@
         private System.Windows.Forms.Button btn_startyear;
         private System.Windows.Forms.Button btn_startharvest;
         private System.Windows.Forms.Button btn_yearresults;
+        private System.Windows.Forms.Label lbl_playername;
     }
 }
 

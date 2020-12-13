@@ -40,6 +40,7 @@ namespace bead_program
             this.MinimizeBox = false;
             loadCounties();
 
+            lbl_playername.Text = playerName;
             year = 2015;
             btn_startharvest.Enabled = false;
             btn_startharvest.BackColor = Color.Transparent;
