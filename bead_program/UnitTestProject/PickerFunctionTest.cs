@@ -1,5 +1,6 @@
 ﻿using bead_program;
 using bead_program.Forms;
+using bead_program.UserControls;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace UnitTestProject
         ]
         public void PickerTest(int income, int boughtDogs, int spentMoney)
         {
-            var form = new Form1();
+            var form = new Harvest();
 
             var result = form.buyDogsAI(income);
 

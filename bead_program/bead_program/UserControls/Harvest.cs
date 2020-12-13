@@ -26,14 +26,9 @@ namespace bead_program.UserControls
         public int monthCounter = 0;
 
 
-        public Harvest(County pickedCounty, Player player, int marketPrice, BindingList<County> pickedCounties, BindingList<Player> players, BindingList<County> resultCounties)
+        public Harvest()
         {
-            this.pickedCounty = pickedCounty;
-            this.player = player;
-            this.marketPrice = marketPrice;
-            this.pickedCounties = pickedCounties;
-            this.players = players;
-            this.resultCounties = resultCounties;
+            
             InitializeComponent();
             btn_results.Enabled = false;
             lbl_price.Text = marketPrice.ToString();
@@ -154,6 +149,50 @@ namespace bead_program.UserControls
         }
 
 
+
+        public void buyDogsForAi()
+        {
+            for (int i = 0; i < pickedCounties.Count; i++)
+            {
+                int ownerID = int.Parse(pickedCounties[i].ownerID);
+                int pos = getPlayerPosById(ownerID);
+
+                if (ownerID != 4)
+                {
+                    BuyDogResult temp = buyDogsAI(pickedCounties[i].income);
+                    players[pos].addIncome(-temp.spentMoney);
+                    players[pos].dogs += temp.boughtDogs;
+                }
+
+
+            }
+        }
+
+        public BuyDogResult buyDogsAI(int income)
+        {
+            int _boughtDogs = 0;
+            int _spentMoney = 0;
+
+            if (income >= 1000000)
+            {
+                double temp = income / 1000000;
+                int num = (int)Math.Round(temp);
+
+                _boughtDogs = num;
+                _spentMoney = num * 1000000;
+            }
+
+            BuyDogResult result = new BuyDogResult()
+            {
+                boughtDogs = _boughtDogs,
+                spentMoney = _spentMoney
+            };
+
+            return result;
+
+
+        }
+
         private void lbl_process_Click(object sender, EventArgs e)
         {
 
@@ -176,11 +215,20 @@ namespace bead_program.UserControls
 
         private void btn_results_Click(object sender, EventArgs e)
         {
+            buyDogsForAi();
             simulateAI();
             this.Parent.Controls.Clear();
         }
     }
 
 
-    
+
+    public class BuyDogResult
+    {
+        public int boughtDogs { get; set; }
+        public int spentMoney { get; set; }
+    }
+
+
+
 }

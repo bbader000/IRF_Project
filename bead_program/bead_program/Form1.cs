@@ -103,7 +103,6 @@ namespace bead_program
                     area = int.Parse(row.Element("Area").Value),
                     forest = double.Parse(row.Element("Forest").Value),
                     rain = int.Parse(row.Element("Rain").Value),
-                    value = 3000000
                 }
                 );
 
@@ -168,7 +167,6 @@ namespace bead_program
             }
             else if (stage == 1)
             {
-                buyDogsForAi();
                 btn_yearresults.Enabled = true;
                 btn_startyear.Enabled = true;
                 lbl_balance.Text = players[3].balance.ToString();
@@ -177,48 +175,8 @@ namespace bead_program
 
         }
 
-        public void buyDogsForAi()
-        {
-            for (int i = 0; i < pickedCounties.Count; i++)
-            {
-                int ownerID = int.Parse(pickedCounties[i].ownerID);
-                int pos = getPlayerPosById(ownerID);
-
-                if (ownerID != 4)
-                {
-                    BuyDogResult temp = buyDogsAI(pickedCounties[i].income);
-                    players[pos].addIncome(-temp.spentMoney);
-                    players[pos].dogs += temp.boughtDogs;
-                }
-
-                
-            }
-        }
-
-        public BuyDogResult buyDogsAI(int income)
-        {
-            int _boughtDogs = 0;
-            int _spentMoney = 0;
-
-            if (income >= 1000000)
-            {
-                double temp = income / 1000000;
-                int num = (int)Math.Round(temp);
-
-                _boughtDogs = num;
-                _spentMoney = num * 1000000;
-            }
-
-            BuyDogResult result = new BuyDogResult()
-            {
-                boughtDogs = _boughtDogs,
-                spentMoney = _spentMoney
-            };
-
-            return result;
-
-
-        }
+        
+        
 
         private void btn_startyear_Click(object sender, EventArgs e)
         {
@@ -239,7 +197,15 @@ namespace bead_program
            
             btn_startharvest.Enabled = false;
             btn_startharvest.BackColor = Color.Transparent;
-            Harvest harvest = new Harvest(counties[0], players[3], marketPrice, pickedCounties, players, resultCounties);
+            Harvest harvest = new Harvest()
+            {
+                pickedCounty = counties[0],
+                player = players[3],
+                marketPrice = marketPrice,
+                pickedCounties = pickedCounties,
+                players = players,
+                resultCounties = resultCounties,
+            };
             panel_main.Controls.Add(harvest);
         }
 
@@ -262,9 +228,5 @@ namespace bead_program
         }
     }
 
-    public class BuyDogResult
-    { 
-        public int boughtDogs { get; set; }
-        public int spentMoney { get; set; }
-    }
+   
 }
