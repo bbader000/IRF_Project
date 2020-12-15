@@ -50,6 +50,7 @@
             this.lbl_cashcounter.TabIndex = 0;
             this.lbl_cashcounter.Text = "0";
             this.lbl_cashcounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_cashcounter.Click += new System.EventHandler(this.lbl_cashcounter_Click);
             // 
             // lbl_cash
             // 

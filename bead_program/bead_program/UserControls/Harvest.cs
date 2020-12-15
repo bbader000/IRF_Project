@@ -227,6 +227,11 @@ namespace bead_program.UserControls
             
             this.Parent.Controls.Clear();
         }
+
+        private void lbl_cashcounter_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
