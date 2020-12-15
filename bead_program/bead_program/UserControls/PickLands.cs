@@ -33,7 +33,11 @@ namespace bead_program.UserControls
             this.players = players;
             dgw_lands.DataSource = counties;
             dgw_lands.Columns["id"].Visible = false;
-            //dgw_lands.Columns["mush"].Visible = false;
+            dgw_lands.Columns["oldValue"].Visible = false;
+            dgw_lands.Columns["mush"].Visible = false;
+            dgw_lands.Columns["ownerID"].Visible = false;
+            dgw_lands.Columns["income"].Visible = false;
+
             btn_startyear.Enabled = false;
             btn_startyear.Enabled = false;
 
@@ -113,27 +117,19 @@ namespace bead_program.UserControls
                 bidWinnerPick(county, bidForm.currentValue, bidForm.buyerID);
                 dgw_lands.Refresh();
 
+            }
+            if (bidForm.buyerID != 4)
+            {
+                newPick(getPlayerPosById(4));
+            }
 
-                if (bidForm.buyerID != 4)
+            for (int i = 0; i < bidders.Count; i++)
+            {
+                if (bidders[i].id != bidForm.buyerID)
                 {
-                    newPick(getPlayerPosById(4));
+                    newPick(getPlayerPosById(bidders[i].id));
                 }
-
-                for (int i = 0; i < bidders.Count; i++)
-                {
-                    if (bidders[i].id != bidForm.buyerID)
-                    {
-                        newPick(getPlayerPosById(bidders[i].id));
-                    }
-                    dgw_lands.Refresh();
-                }
-
-                
-
-
-
-
-
+                dgw_lands.Refresh();
             }
 
         }
@@ -389,6 +385,7 @@ namespace bead_program.UserControls
                 //pickLandsFirst();
                 
                 county.setOwner(players[3].name, players[3].id);
+                dgw_lands.Refresh();
                 checkIfBid();
 
                 btn_startyear.Enabled = true;

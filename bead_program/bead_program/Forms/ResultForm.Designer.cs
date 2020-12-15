@@ -37,7 +37,7 @@
             // 
             this.lbl_results.AutoSize = true;
             this.lbl_results.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl_results.Location = new System.Drawing.Point(227, 29);
+            this.lbl_results.Location = new System.Drawing.Point(218, 27);
             this.lbl_results.Name = "lbl_results";
             this.lbl_results.Size = new System.Drawing.Size(132, 25);
             this.lbl_results.TabIndex = 0;
@@ -47,14 +47,14 @@
             // 
             this.resultpanel.Location = new System.Drawing.Point(78, 76);
             this.resultpanel.Name = "resultpanel";
-            this.resultpanel.Size = new System.Drawing.Size(408, 452);
+            this.resultpanel.Size = new System.Drawing.Size(402, 558);
             this.resultpanel.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(210, 536);
+            this.button1.Location = new System.Drawing.Point(199, 651);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 43);
             this.button1.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 591);
+            this.ClientSize = new System.Drawing.Size(569, 708);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.resultpanel);
             this.Controls.Add(this.lbl_results);

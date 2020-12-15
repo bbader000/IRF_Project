@@ -15,9 +15,12 @@ namespace bead_program.UserControls
         public ResultField(int pos , string name, int balance)
         {
             InitializeComponent();
-            lbl_pos.Text = pos.ToString();
+            this.Width = 402;
+            this.Top = pos * this.Height -140;
+            this.Left = -85;
+            lbl_pos.Text = pos.ToString() + ".";
             lbl_name.Text = name;
-            lbl_balance.Text = pos.ToString();
+            lbl_balance.Text = balance.ToString()+ " Ft";
             
         }
 

@@ -40,7 +40,7 @@ namespace bead_program.UserControls
 
 
 
-            monthTimer.Interval = 1000;
+            monthTimer.Interval = 2000;
             monthTimer.Start();
             monthTimer.Tick += MonthTimer_Tick;
 

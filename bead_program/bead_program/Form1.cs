@@ -87,7 +87,16 @@ namespace bead_program
             UserNameForm nameform = new UserNameForm();
             if (nameform.ShowDialog() == DialogResult.OK)
             {
-                this.playerName = nameform.name;
+                if (nameform.name == "")
+                {
+                    this.playerName = "Játékos";
+                }
+                else
+                {
+                    this.playerName = nameform.name;
+                }
+
+                
             }
             
         }
@@ -179,7 +188,8 @@ namespace bead_program
 
                 if (year == 2020)
                 {
-
+                    ResultForm result = new ResultForm(players);
+                    result.ShowDialog();
                 }
                 
             }
@@ -222,54 +232,18 @@ namespace bead_program
 
         private void btn_yearresults_Click(object sender, EventArgs e)
         {
-            List<CountyResult> tempList = new List<CountyResult>();
-
-            for (int i = 0; i < resultCounties.Count; i++)
+            try
             {
-                CountyResult temp = new CountyResult()
-                {
-                    name = resultCounties[i].name,
-                    value = resultCounties[i].value,
-                    oldvalue = resultCounties[i].oldvalue,
-                    owner = resultCounties[i].owner,
-                    mush = resultCounties[i].mush,
-                    income = resultCounties[i].income,
-                };
-
-                tempList.Add(temp);
+                CSVWriter writer = new CSVWriter();
+                writer.writeCSV(resultCounties);
+                MessageBox.Show("Sikeres exportálás", "Exportálás", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            using (var mem = new MemoryStream())
-            using (var writer = new StreamWriter("ertekelo.csv"))
-            using (var csvWriter = new CsvWriter(writer, System.Globalization.CultureInfo.CurrentCulture))
+            catch (Exception)
             {
-                csvWriter.Configuration.Delimiter = ";";
 
-                csvWriter.WriteField("Megye");
-                csvWriter.WriteField("Vetelar");
-                csvWriter.WriteField("Eredeti ar");
-                csvWriter.WriteField("Jogosult");
-                csvWriter.WriteField("Goma mennyiseg (kg)");
-                csvWriter.WriteField("Bevetel");
-                csvWriter.NextRecord();
-
-                foreach (CountyResult project in tempList)
-                {
-                    csvWriter.WriteField(project.name);
-                    csvWriter.WriteField(project.value);
-                    csvWriter.WriteField(project.oldvalue);
-                    csvWriter.WriteField(project.owner);
-                    csvWriter.WriteField(project.mush);
-                    csvWriter.WriteField(project.income);
-                    csvWriter.NextRecord();
-                }
-
-                writer.Flush();
-                var result = Encoding.UTF8.GetString(mem.ToArray());
-                Console.WriteLine(result);
+                MessageBox.Show("Az exportálás nem sikerült", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-
+            
 
         }
 

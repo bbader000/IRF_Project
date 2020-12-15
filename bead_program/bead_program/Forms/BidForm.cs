@@ -57,7 +57,7 @@ namespace bead_program.Forms
         private void BidForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-                if (buyerID == 0)
+                if (buyerID == 0 || buyerID == 4)
                 {
                     for (int i = 0; i < bidders.Count; i++)
                     {
@@ -69,6 +69,7 @@ namespace bead_program.Forms
                         }
                     }
                 }
+
 
             
         }

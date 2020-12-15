@@ -26,6 +26,7 @@ namespace bead_program.Forms
             this.MinimizeBox = false;
 
             List<Player> sortedList = players.OrderBy(o => o.balance).ToList();
+            sortedList.Reverse();
 
             for (int i = 0; i < sortedList.Count; i++)
             {
