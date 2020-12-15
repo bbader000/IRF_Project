@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -103,8 +104,13 @@ namespace bead_program
 
         void loadCounties()
         {
-            XDocument xdocument = XDocument.Load("countydata.xml");
-            IEnumerable<XElement> data = xdocument.Root.Elements();
+            string startupPath = System.IO.Directory.GetCurrentDirectory();
+
+            // string startupPath = Environment.CurrentDirectory;
+            
+ 
+             XDocument xdocument = XDocument.Load(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\Data\countydata.xml"))) ;
+            IEnumerable <XElement> data = xdocument.Root.Elements();
             int i = 1;
             foreach (var row in data)
             {
