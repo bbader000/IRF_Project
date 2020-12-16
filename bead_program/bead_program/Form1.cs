@@ -103,13 +103,9 @@ namespace bead_program
         }
 
         void loadCounties()
-        {
-            string startupPath = System.IO.Directory.GetCurrentDirectory();
-
-            // string startupPath = Environment.CurrentDirectory;
-            
+        {         
  
-             XDocument xdocument = XDocument.Load(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\Data\countydata.xml"))) ;
+            XDocument xdocument = XDocument.Load(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\Data\countydata.xml"))) ;
             IEnumerable <XElement> data = xdocument.Root.Elements();
             int i = 1;
             foreach (var row in data)
