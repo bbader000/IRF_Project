@@ -22,6 +22,7 @@ namespace bead_program.Forms
         public int _tickCounter;
         public int currentValue;
         public int buyerID;
+        public bool okEnd = false;
         Random rn = new Random();
         Timer timerMain = new Timer();
 
@@ -57,7 +58,7 @@ namespace bead_program.Forms
         private void BidForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-                if (buyerID == 0 || buyerID == 4)
+                if (!okEnd)
                 {
                     for (int i = 0; i < bidders.Count; i++)
                     {
@@ -107,6 +108,7 @@ namespace bead_program.Forms
             if (_tickCounter == 10)
             {
                 timerMain.Stop();
+                okEnd = true;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
 

@@ -86,13 +86,13 @@
             this.Rain});
             this.dgw_lands.Location = new System.Drawing.Point(60, 55);
             this.dgw_lands.Name = "dgw_lands";
-            this.dgw_lands.Size = new System.Drawing.Size(710, 397);
+            this.dgw_lands.Size = new System.Drawing.Size(668, 397);
             this.dgw_lands.TabIndex = 12;
             // 
             // btn_startyear
             // 
             this.btn_startyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_startyear.Location = new System.Drawing.Point(595, 458);
+            this.btn_startyear.Location = new System.Drawing.Point(553, 458);
             this.btn_startyear.Name = "btn_startyear";
             this.btn_startyear.Size = new System.Drawing.Size(175, 51);
             this.btn_startyear.TabIndex = 16;
@@ -108,7 +108,7 @@
             // 
             // Ár
             // 
-            this.Ár.DataPropertyName = "Ár";
+            this.Ár.DataPropertyName = "value";
             this.Ár.HeaderText = "Ár";
             this.Ár.Name = "Ár";
             // 

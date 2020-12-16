@@ -234,17 +234,17 @@ namespace bead_program
 
         private void btn_yearresults_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 CSVWriter writer = new CSVWriter();
                 writer.writeCSV(resultCounties);
                 MessageBox.Show("Sikeres exportálás", "Exportálás", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                MessageBox.Show("Az exportálás nem sikerült", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            //    MessageBox.Show("Az exportálás nem sikerült", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //}
             
 
         }
