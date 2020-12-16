@@ -13,7 +13,8 @@ namespace bead_program.Entities
     public class CSVWriter
     {
 
-        public void writeCSV(BindingList<County> resultCounties)
+
+        public bool writeCSV(BindingList<County> resultCounties)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.InitialDirectory = Application.StartupPath;
@@ -78,17 +79,19 @@ namespace bead_program.Entities
 
                 }
 
+
+
+                return true;
             }
-            else throw Exception();
+            else
+            {
+                return false;
+            }
+
+
         }
 
-        private Exception Exception()
-        {
-            throw new NotImplementedException();
-        }
+
+
     }
-       
-
-
-        
 }

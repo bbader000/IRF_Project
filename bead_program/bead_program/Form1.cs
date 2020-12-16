@@ -234,18 +234,30 @@ namespace bead_program
 
         private void btn_yearresults_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 CSVWriter writer = new CSVWriter();
-                writer.writeCSV(resultCounties);
-                MessageBox.Show("Sikeres exportálás", "Exportálás", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //}
-            //catch (Exception)
-            //{
+                bool isOk = writer.writeCSV(resultCounties);
 
-            //    MessageBox.Show("Az exportálás nem sikerült", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //}
-            
+                if (isOk)
+                {
+                    MessageBox.Show("Sikeres exportálás", "Exportálás", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Sikertelen exportálás, nem lett mentési útvonal kiválasztva", "Exportálás", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+               
+                
+           
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Az exportálás nem sikerült", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
 
         }
 
